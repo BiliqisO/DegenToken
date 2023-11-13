@@ -4,23 +4,16 @@ const helpers = require("@nomicfoundation/hardhat-network-helpers");
 const { utils } = require("ethers");
 
 describe("degen", function () {
-  //   const [address] =   hre.ethers.getSigners;
   let degen;
   let owner;
   let addr1;
   let addr2;
-  //   let user = "0x0000000000000000000000000000000000001234";
-  //   let signedUser;
-  //   const amount = 10000;
   beforeEach(async function () {
     [owner, addr1, addr2] = await hre.ethers.getSigners();
     const Degen = await hre.ethers.getContractFactory("DegenToken");
     degen = await Degen.deploy();
     await degen.deployed();
     await degen.mint(addr1.address, 5);
-
-    // signedUser = await hre.ethers.getImpersonatedSigner(user);
-    // await helpers.setBalance(addr1, hre.ethers.utils.parseEther("2"));
   });
 
   it("should mint", async function () {
